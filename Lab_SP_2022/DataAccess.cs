@@ -36,21 +36,13 @@ namespace Lab_SP_2022
          * Модель данных создана командой:
          * Scaffold-DbContext "Data Source=magister-v;Initial Catalog=Faculty_UA_22;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context FacultyContext -OutputDir Models -Tables STUDENTS, GROUPS, SUBJECTS, TUTORS, CHAIRS, CURRICULUM, Test_Table
          * Классы модели данных находятся в папке Models
+         * 
+         * Документация:
+         * https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/scaffolding?tabs=vs
          */
 
         /* TODO 0.2: З'єднання з БД
          * Замініть строку з'єднання в контексті даних (файл Model\FacultyContext.cs )
-         * 
-         * Необходимо создать модель сущностых классов, используя подход DataBase First,
-         * т.е. сгенерировать модель на основе существующей БД.
-         * Для этого в окне диспетчера пакетов (Package Manager Console) выполните команду,
-         * указав в ней путь к БД Faculty_UA_22:
-         * 
-         * 
-         * Команда не отработает, если есть ошибки компиляции
-         * 
-         * Документация:
-         * https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/scaffolding?tabs=vs
          */
 
 
