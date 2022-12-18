@@ -58,5 +58,10 @@ namespace Lab_SP_2022
         {
             dataAcc.Task21(textBox21_1.Text, textBox21_2.Text);
         }
+
+        private void func22button_Click(object sender, EventArgs e)
+        {
+            dataAcc.Task22(textBox22_1.Text, textBox22_2.Text);
+        }
     }
 }

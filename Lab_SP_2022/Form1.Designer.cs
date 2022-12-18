@@ -527,7 +527,7 @@
             this.func22button.TabIndex = 3;
             this.func22button.Text = "Виклик!";
             this.func22button.UseVisualStyleBackColor = true;
-            this.func22button.Click += new System.EventHandler(this.func31button_Click);
+            this.func22button.Click += new System.EventHandler(this.func22button_Click);
             // 
             // label32
             // 
