@@ -7,12 +7,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Lab_SP_2022.Models
 {
-    /* TODO 1.1aaa: Доопределение контекста
-     * Включаем новые классы в контекст 
-     * Класс контекста определён как partial
-     * Это позволяет нам дополнять его, не изменяя автосгенерированный код
-     * (иначе при перестроении модели можно потрять свои изменения)
-     */
+        /* TODO 1.1aaa: Довизначення контексту 
+        * Включаємо нові класи в контекст 
+        * Клас контексту визначено як partial 
+        * Це дозволяє нам доповнювати його, не змінюючи автозгенерований код 
+        * (інакше при перебудові моделі можна змінити свої зміни) 
+        */
 
     public partial class FacultyContext : DbContext
     {
@@ -22,7 +22,7 @@ namespace Lab_SP_2022.Models
 
         public virtual DbSet<IntScalar> IntScalar { get; set; }
 
-        /* TODO 1.1bb. Створення метдів для мапінгу функцій
+        /* TODO 1.1bb. Створення методів для мапінгу функцій
          * Створюється метод-обгортка, до якого прив'язується визов SQL-функції
          * В коді програми цей метод визиваєьться як звичайно
          * Після створення методу-обгортки його необхіжно прив'язати до функції в БД
@@ -30,18 +30,18 @@ namespace Lab_SP_2022.Models
          * 
          */
 
-        // методы для маппинга функций
+        // методи для мапінга функцій
         public IQueryable<Inline_F01_Res> Inline_F01_Wrap(string GrNum, int Absc)
             => throw new NotSupportedException();
 
-        // маппинг
+        // мапінг
         public IQueryable<Inline_F01_Res> Inline_F01_Map(string GrNum, int Absc)
             => FromExpression<Inline_F01_Res>(() => Inline_F01_Wrap(GrNum, Absc));
 
-        /* TODO ???
-         * х.з., чего привязка метода к скалярной функции не работает
-         * есть ощущуение, что я какой-то фигни не понимаю
-         */
+        / * TODO ??? 
+        * х.з., чого прив'язка методу до скалярної функції не працює 
+        * є відчуття, що я якоїсь фігні не розумію 
+        */
         public int Scalar_Function_N0100(string GrNum, int Absc)
             => throw new NotSupportedException();
 
@@ -50,10 +50,10 @@ namespace Lab_SP_2022.Models
 
 
         /* 
-         * Используя Fluent API, определяем свойства набора данных
-         * В частности указываем, что наборы, возвращаемые табличными функциями,
-         * не имеют ключевого поля
-         */
+        * Використовуючи Fluent API, визначаємо властивості набору даних 
+        * Зокрема вказуємо, що набори, що повертаються табличними функціями, 
+        * не мають ключового поля 
+        */
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Example12_Res>().HasNoKey();
@@ -71,7 +71,7 @@ namespace Lab_SP_2022.Models
             //modelBuilder.HasDbFunction(typeof(FacultyContext).GetMethod(nameof(Scalar_Function_N0100), new[] { typeof(int) }))
             //    .HasName("Scalar_Function_N0100");
 
-            // Возвращайтесь к задаче TODO 1.1b
+            // Повертайтесь к задаче TODO 1.1b
         }
     }
 }
