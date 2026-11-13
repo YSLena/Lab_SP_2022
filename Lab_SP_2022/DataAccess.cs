@@ -11,35 +11,35 @@ namespace Lab_SP_2022
 {
     class DataAccess
     {
-        /* TODO 0 : Цели и задачи
-         * Задача лабораторной - изучение средств технологии Entity Framework Core 
-         * для работы с SQL-запросами, в т.ч. 
-         * для использования функционала БД (хранимых процедур и пользовательских функций).
-         * Документация:
-         * https://docs.microsoft.com/ru-ru/ef/core/querying/raw-sql#limitations
-         */
-
-        /* TODO 0.1: Подготовка к работе
-         * Должны быть установлены NuGet пакеты:
-         * - Microsoft.EntityFrameworkCore.SqlServer,
-         * - Microsoft.EntityFrameworkCore.Tools.
-         * Это можно сделать через менеджер пакетов (Project \ Manage NuGet Packages ...).
-         * 
-         * Или через консоль диспетчер пакетов (Tools \ NuGet Package Manager \ Package Manager Console), 
-         * выполнив команды:
-         * Install-Package Microsoft.EntityFrameworkCore.SqlServer -version 5.0.17
-         * Install-Package Microsoft.EntityFrameworkCore.Tools -version 5.0.17
-         * 
-         * Версия 5.0.17 выбрана для совместимости с .NET Core 3.1, 
-         * т.к. не все ещё установили VS 2022, а на VS 2019 новейшие версии не пойдут 
-         * 
-         * Модель данных создана командой:
-         * Scaffold-DbContext "Data Source=magister-v;Initial Catalog=Faculty_UA_22;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -Context FacultyContext -OutputDir Models -Tables STUDENTS, GROUPS, SUBJECTS, TUTORS, CHAIRS, CURRICULUM, Test_Table
-         * Классы модели данных находятся в папке Models
-         * 
-         * Документация:
-         * https://docs.microsoft.com/ru-ru/ef/core/managing-schemas/scaffolding?tabs=vs
-         */
+        /* TODO 0 : Цілі та завдання 
+        * Завдання лабораторної – вивчення засобів технології Entity Framework Core 
+        * до роботи з SQL-запросами, зокрема. 
+        * для використання функціоналу БД (зберігаються процедури і функцій користувача). 
+        * Документація: 
+        * https://docs.microsoft.com/ef/core/querying/raw-sql#limitations 
+        */
+        
+        /* TODO 0.1: Підготовка до роботи 
+        * Повинні бути встановлені пакети NuGet: 
+        * - Microsoft.EntityFrameworkCore.SqlServer, 
+        * - Microsoft.EntityFrameworkCore.Tools. 
+        * Це можна зробити через менеджер пакетів (Project\Manage NuGet Packages...). 
+        * 
+        * Або через консоль диспетчер пакетів (Tools \ NuGet Package Manager \ Package Manager Console), 
+        * Виконавши команди: 
+        * Install-Package Microsoft.EntityFrameworkCore.SqlServer -version 7.0.0
+        * Install-Package Microsoft.EntityFrameworkCore.Tools -version 7.0.0 
+        * 
+        * Версія 7.0.0 вибрана для сумісності 
+        * Якщо у вас встановлена більш нова версія .Net - обірайте відповідну версію
+        * 
+        * Модель даних створена командою: 
+        * Scaffold-DbContext "Data Source = magister-v; Initial Catalog = Faculty_UA_22; Integrated Security = True" Microsoft.EntityFrameworkCore. CURRICULUM, Test_Table 
+        * Класи моделі даних знаходяться у папці Models 
+        * 
+        * Документація: 
+        * https://docs.microsoft.com/ef/core/managing-schemas/scaffolding?tabs=vs 
+        */
 
         /* TODO 0.2: З'єднання з БД
          * Замініть строку з'єднання в контексті даних (файл Model\FacultyContext.cs )
@@ -50,13 +50,13 @@ namespace Lab_SP_2022
 
         Models.FacultyContext context = new Models.FacultyContext();
 
-        /* TODO 1.1a: Примеры выполнения SQL-запросов
+        /* TODO 1.1a: Приклади виконання SQL-запитів
          */
 
-        /* Пример 1.0
-          * Простой запрос с возвратом объектов сущностного класса Students
-          * Раскомментируйте строку ниже, запустите программу и нажмите на форме первую кнопку "Вызвать!"
-          */
+        /* Приклад 1.0 
+        * Простий запит із поверненням об'єктів сутнісного класу Students 
+        * Розкоментуйте рядок нижче, запустіть програму та натисніть на формі першу кнопку "Викликати!" 
+        */
         //form1.dataGridView11.DataSource = context.Students.FromSqlRaw("SELECT * FROM STUDENTS").ToList();
 
         /* Пример 1.1
@@ -65,62 +65,62 @@ namespace Lab_SP_2022
          * задачи TODO 1.1a и 1.1b (они в других файлах)
          */
 
-        /* Пример 1.2
-         * Вызов функции Inline_F01
-         * Откройте эту функцию в БД или в обозревателе серверов
-         * Для этого раскройте БД Faculty_UA_22 и найдите в ней Functions или Programmability \ Functions
-         * Изучите входные параметры и структуру выходного набора
-         * Для возврата данных создан класс Lab_sp.Models.Inline_F01_Res, 
-         * по аналогии с тем, как это сделано в предыдущем примере
-         * Значения param1 и param1 устаналиваются на форме Form1
-         */
+        /* Приклад 1.2 
+        * Виклик функції Inline_F01 
+        * Відкрийте цю функцію в БД або в браузері серверів 
+        * Для цього розкрийте БД Faculty_UA_22 і знайдіть у ній Functions або Programmability \ Functions 
+        * Вивчіть вхідні параметри та структуру вихідного набору 
+        * Для повернення даних створено клас Lab_sp.Models.Inline_F01_Res, 
+        * за аналогією з тим, як це зроблено в попередньому прикладі 
+        * Значення param1 та param1 встановлюються на формі Form1 
+        */
 
-        // Передача параметров путём форматирования строки
+        // Передача параметрів шляхом форматування рядка
         //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlRaw("SELECT * FROM dbo.Inline_Function_N01 ({0}, {1})", param1, param2).ToList();
 
-        // Передача параметров через интерполированную строку $""
+        // Передача параметрів через інтерполований рядок $""
         //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlInterpolated($"SELECT * FROM dbo.Inline_Function_N01 ({param1}, {param2})").ToList();
 
-        /* Пример 1.3
-         * Создание параметризованного запроса для вызова функции
-         * Параметры @group и @absences тспользуются для передачи значений param1 и param1 
-         * Обратите внимание на преобразование типа параметра param2
-         */
-
+        /* Приклад 1.3 
+        * Створення параметризованого запиту для виклику функції 
+        * Параметри @group і @absences використовуються для передачі значень param1 і param1 
+        * Зверніть увагу на перетворення типу параметра param2 
+        */
+        
         //var par_group = new Microsoft.Data.SqlClient.SqlParameter("@group", param1);
         //var par_absences = new Microsoft.Data.SqlClient.SqlParameter("@absences", int.Parse(param2));
-        // интерполяция
+        // інтерполяциія
         //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlInterpolated($"SELECT * FROM dbo.Inline_Function_N01 ({par_group}, {par_absences})").ToList();
-        // или форматирование
+        // или форматування
         //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlRaw($"SELECT * FROM dbo.Inline_Function_N01 (@group, @absences)", par_group, par_absences).ToList();
 
 
-        /* Больше примеров:
+        /* Більше прикладов:
          * https://www.learnentityframeworkcore.com/raw-sql
          */
 
         public void Task11a_Example(string param1, string param2)
         {
-            // создание параметров (см. Пример 1.3)
+            // створення параметрів (див. приклад 1.3)
             var par_group = new Microsoft.Data.SqlClient.SqlParameter("@group", param1);
             var par_absences = new Microsoft.Data.SqlClient.SqlParameter("@absences", int.Parse(param2));
-            // вызов функции с параметрами
+            // визов функції с параметрами
             form1.dataGridView11.DataSource = context.Inline_F01_Res.
                 FromSqlInterpolated($"SELECT * FROM dbo.Inline_Function_N01 ({par_group}, {par_absences})").ToList();
 
-            /* Другие примеры выполнения SQL-запросов
-             * Все примеры работоспособны, можете выполнять их по очереди
-             * Раскомментируйте нужную строку, запустите программу и нажмите на форме первую кнопку "Вызвать!"
-             * Описание примеров см. в комментарии выше
-             */
-
-            /* Пример 1.0 */
+            /* Інші приклади виконання SQL-запитів 
+            * Всі приклади працездатні, можете виконувати їх по черзі 
+            * Розкоментуйте потрібний рядок, запустіть програму та натисніть на формі першу кнопку "Викликати!" 
+            * Опис прикладів див. у коментарі вище 
+            */
+            
+            /* Приклад 1.0 */
             //form1.dataGridView11.DataSource = context.Students.FromSqlRaw("SELECT * FROM STUDENTS").ToList();
 
-            /* Пример 1.1 */
+            /* Приклад 1.1 */
             //form1.dataGridView11.DataSource = context.Example12_Res.FromSqlRaw("SELECT Name, Surname FROM STUDENTS").ToList();
 
-            /* Пример 1.2 */
+            /* Приклад 1.2 */
             //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlRaw("SELECT * FROM dbo.Inline_Function_N01 ({0}, {1})", param1, param2).ToList();
             // или
             //form1.dataGridView11.DataSource = context.Inline_F01_Res.FromSqlInterpolated($"SELECT * FROM dbo.Inline_Function_N01 ({param1}, {param2})").ToList();
@@ -144,37 +144,38 @@ namespace Lab_SP_2022
             form1.dataGridView11.DataSource = context.Inline_F01_Map(param1, Int32.Parse(param2)).ToList();
         }
 
-        /* TODO 1.2
-         * Создание и вызов собственной пользовательской функции
-         * В БД создайте собственную пользовательскую функцию на языке Transact-SQL 
-         * в соответсвии с вариантом задания
-         * Дополнительные сведения и примеры функций Transact-SQL см. в библиотеке MSDN:
-         * https://msdn.microsoft.com/ru-ru/library/ms186755.aspx
-         * 
-         * Для создания функции найдите список функций БД (см. предыдущую задачу), щёлкните правой кнопкой на списке Functions
-         * и выберите команду Add new \ Inline Function
-         * В открывшемся окне отредактируйте код SQL-запроса CREATE FUNCTION
-         * 
-         * В методе Task12() запрограммируйте вызов этой функции
-         * и привязку возвращённых ею данных к компоненту form1.dataGridView11
-         * Не забудьте создать класс для возврата результатов и включить его в контекст (см. примеры в п. 1.1a)
-         * Если второй параметр не нужен - забейте на него (он нужен для привязки к форме, т.к. там два текстбокса)
-         */
+        /* TODO 1.2 
+        * Створення та виклик власної функції користувача 
+        * У БД створіть власну функцію користувача на мові Transact-SQL 
+        * у відповідності з варіантом завдання 
+        * Додаткові відомості та приклади функцій Transact-SQL див. у бібліотеці MSDN: 
+        * https://msdn.microsoft.com/library/ms186755.aspx 
+        * 
+        * Для створення функції знайдіть список функцій БД (див. попереднє завдання), клацніть правою кнопкою на списку Functions 
+        * та виберіть команду Add new \ Inline Function 
+        * У вікні відредагуйте код SQL-запиту CREATE FUNCTION 
+        * 
+        * У методі Task12() запрограмуйте виклик цієї функції 
+        * та прив'язку повернутих нею даних до компонента form1.dataGridView11 
+        * Не забудьте створити клас для повернення результатів та включити його в контекст (див. приклади у п. 1.1a) 
+        * Якщо другий параметр не потрібен - забіть на нього (він потрібен для прив'язки до форми, тому там два текстбокси) 
+        */
 
         public void Task12(string param1, string param2)
         {
             form1.dataGridView11.DataSource = null;
         }
 
-        /* TODO 1.3
-         * Создание и вызов собственной табличной пользовательской функции
-         * В БД создайте собственную пользовательскую функцию на языке Transact-SQL 
-         * в соответсвии с вариантом задания
-         * Не забудьте описать класс для структуры выходной таблицы
-         * В качестве примера можно посмотреть в БД функцию Table_Function_N0100
-         * В методе Task13() запрограммируйте вызов этой функции
-         * и привязку возвращённых ею данных к компоненту form1.dataGridView11
-         */
+        /* TODO 1.3 
+        * Створення та виклик власної табличної користувальницької функції 
+        * У БД створіть власну функцію користувача на мові Transact-SQL 
+        * у відповідності з варіантом завдання 
+        * Не забудьте описати клас для структури вихідної таблиці 
+        * Як приклад можна подивитися в БД функцію Table_Function_N0100 
+        * У методі Task13() запрограмуйте виклик цієї функції 
+        * та прив'язку повернутих нею даних до компонента form1.dataGridView11 
+        */
+        
         public void Task13(string param1, string param2)
         {
             form1.dataGridView11.DataSource = null; 
@@ -199,7 +200,7 @@ namespace Lab_SP_2022
                 .FromSqlInterpolated($"SELECT dbo.Scalar_Function_N0100({par_group}, {par_absences}) AS Result")
                 .FirstOrDefault()?.Result ?? 0).ToString();
 
-            // привязка метода почему-то не работает :(
+            // прив'язка методу чомусь не працює :(
             //form1.label21res.Text = context.Scalar_Function_N0100(param1, Int32.Parse(param2)).ToString(); 
         }
 
@@ -220,14 +221,14 @@ namespace Lab_SP_2022
 
 
 
-        /* TODO 3.1
-         * Пример вызова хранимой процедуры StoredProc_N0100
-         * Обратите внимание на получение выходного параметра,
-         * а также обработку исключений
-         * 
-         * Для просмотра результатов на форме перейдите на вкладку Вызов хранимых процедур 
-         * и нажмите первую кнопку Вызвать!
-         */
+        /* TODO 3.1 
+        * Приклад виклику збереженої процедури StoredProc_N0100 
+        * Зверніть увагу на отримання вихідного параметра, 
+        * а також обробку винятків 
+        * 
+        * Для перегляду результатів на формі перейдіть на вкладку Виклик збережених процедур 
+        * та натисніть першу кнопку Викликати! 
+        */
 
         public int OutValue31 = -1;
 
@@ -239,10 +240,10 @@ namespace Lab_SP_2022
                 var par_output = new Microsoft.Data.SqlClient.SqlParameter("@outparam", System.Data.SqlDbType.Int);
                 par_output.Direction = System.Data.ParameterDirection.Output;
 
-                // интерполяция строк
+                // інтерполяція строк
                 context.Database.ExecuteSqlInterpolated($"EXEC StoredProc_N0100 {param1}, {param2}, {param3}, {par_output} OUT");
 
-                //обновление данных на форме
+                //оновлення даних на формі
                 form1.Test_dataGridView.DataSource = context.TestTables.ToList();
                 OutValue31 = (int)par_output.Value;
             }
@@ -252,20 +253,20 @@ namespace Lab_SP_2022
             }
         }
 
-        /* TODO 3.2
-         * Создание хранимой процедуры в соответсвии с вариантом задания.
-         * В БД создайте собственную хранимую процедуру на языке Transact-SQL 
-         * в соответсвии с вариантом задания
-         * Дополнительные сведения и примеры создания хранимых процедур Transact-SQL 
-         * см. в библиотеке MSDN:
-         * https://msdn.microsoft.com/ru-ru/library/ms187926.aspx
-         * 
-         * В методе Task32() запрограммируйте вызов этой хранимой процедуры
-         * и обновление данных из таблицы Test_Table в компоненте form1.Test_dataGridView
-         * Не забудьте получить выходной параметр 
-         * Значение выходного параметра поместите в переменную OutValue22
-         * Реализуйте обработку исключений
-         */
+        /* TODO 3.2 
+        * Створення процедури, що зберігається у відповідності з варіантом завдання. 
+        * У БД створіть власну процедуру, що зберігається на мові Transact-SQL 
+        * у відповідності з варіантом завдання 
+        * Додаткові відомості та приклади створення процедур, що зберігаються Transact-SQL 
+        * див. у бібліотеці MSDN: 
+        * https://msdn.microsoft.com/library/ms187926.aspx 
+        * 
+        * У методі Task32() запрограмуйте виклик цієї процедури, що зберігається. 
+        * та оновлення даних з таблиці Test_Table у компоненті form1.Test_dataGridView 
+        * Не забудьте отримати вихідний параметр 
+        * Значення вихідного параметра помістіть у змінну OutValue22 
+        * Реалізуйте обробку винятків 
+        */
 
         public int OutValue32 = -1;
 
